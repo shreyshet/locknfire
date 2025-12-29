@@ -1,24 +1,83 @@
 
-# 🎯 lock-n-fire: Wireless AI Targeting & Automation
+# 🔥 LockNFire
 
-**lock-n-fire** is a modular, high-speed targeting framework that utilizes **YOLOv11** to track objects and execute timed trigger commands. By offloading heavy AI processing to a PC and relaying commands wirelessly via **UDP**, the system provides a high-torque, responsive hardware interface for any autonomous project.
-
-![Python Version](img.shields.io)
-![YOLO](img.shields.io)
-![Hardware](img.shields.io)
+ Vision‑Guided Autonomous Nerf Turret LockNFire is a computer‑vision‑powered Nerf turret that detects, tracks, and fires at targets using YOLO‑based object detection and a microcontroller‑driven stepper‑motor system. This project blends real‑time vision, embedded control, and custom 3D‑printed hardware into a fully automated mechatronics build.
 
 ---
 
-## 🚀 Key Features
+## ✨ Features
 
-*   **Target Agnostic:** Currently configured for human pose detection (nose), but designed to work with any YOLOv11 model (Face, Hands, or Custom Objects).
-*   **Wireless Bridge Architecture:** Communicates via **UDP over Wi-Fi** for low-latency command transmission, eliminating physical tethers.
-*   **Intelligent Smoothing:** Uses a `deque`-based moving average filter to ensure smooth actuator movement and eliminate detection "jitter."
-*   **Timed Lock-On Mechanism:** Logic-driven trigger system requiring a stable lock (e.g., 2.0s) before sending the **FIRE ('F')** command.
-*   **Hardware Isolation:** Uses an ESP32 for networking and an Arduino for high-current actuator control, ensuring system stability during motor surges.
+- 🎯 Real‑time object detection using YOLO
+- 📷 Webcam‑based live tracking
+- 🔧 Stepper‑motor turret control
+- 🔫 Automated Nerf firing mechanism
+- 🖨️ 3D‑printable mechanical parts included in the repo
+- 🧩 Modular code structure for easy experimentation and upgrades
 
 ---
 
-## 🛠️ The "Bridge" Protocol
+## 📁 Repository Structure
 
-The system utilizes a lightweight ASCII protocol for real-time control:
+```bash
+locknfire/
+│
+├── firmware/
+│   ├── arduino/               # Arduino-based turret controller
+│   └── esp32/                 # ESP32-based turret controller
+│   
+├── vision/                    # YOLO + OpenCV tracking scripts
+│
+├── models/                    # 3D-printable STL files
+│   ├── Base.stl
+│   ├── Top_plate.stl
+│   ├── Motor_Gear.stl
+│   └── Pin.stl
+│
+└── README.md                  # You are here
+```
+
+---
+
+## 🛠 Hardware Requirements
+
+- USB webcam  
+- Arduino Uno **or** ESP32  
+- Stepper motor + driver (A4988 / DRV8825)  
+- Modified Nerf blaster with trigger actuator  
+- 3D‑printed turret components (STLs included)  
+- External power supply for motors  
+
+---
+
+## 🧠 Software Requirements
+
+- Python 3.x  
+- OpenCV  
+- YOLO model (v8/v11 depending on your script)  
+- Arduino IDE or PlatformIO  
+- Serial communication between Python and microcontroller  
+
+---
+
+## ⚙️ Setup
+
+### 1. Print and Assemble the Turret
+
+All `.stl` files are in the `models/` folder.  
+Print them, mount the motors, and attach the Nerf blaster.
+
+### 2. Upload Firmware
+
+Choose your controller:
+
+- `Arduino Code/`  
+- `ESP32 Code/`
+
+Upload the `.ino` file using Arduino IDE.
+
+### 3. Run the Vision System
+Inside `Python Code/`, run the detection script:
+
+```bash
+python Shooter_YOLOV11_Nose.py
+```

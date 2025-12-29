@@ -76,6 +76,7 @@ Choose your controller:
 Upload the `.ino` file using Arduino IDE.
 
 ### 3. Run the Vision System
+
 Inside `Python Code/`, run the detection script:
 
 ```bash

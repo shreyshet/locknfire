@@ -3,6 +3,8 @@
 
  Vision‑Guided Autonomous Nerf Turret LockNFire is a computer‑vision‑powered Nerf turret that detects, tracks, and fires at targets using YOLO‑based object detection and a microcontroller‑driven stepper‑motor system. This project blends real‑time vision, embedded control, and custom 3D‑printed hardware into a fully automated mechatronics build.
 
+![Alpha prototype](https://github.com/shreyshet/locknfire/blob/master/media/alpha_lnf.mp4)
+
 ---
 
 ## ✨ Features
